@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask Boggle</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <section id="game" class="game-box">
+      <div id="board" class="board">
+        {% for row in board %}
+        <div class="row">
+          {% for cell in row %}
+          <div class="cell">{{ cell }}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="guess-box">
+      <form action="/check-word">
+        <input name="word" type="text" method="POST" />
+      </form>
+    </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="/static/script.js"></script>
+  </body>
+</html>

@@ -19,10 +19,15 @@
         {% endfor %}
       </div>
     </section>
-    <section class="guess-box">
-      <form action="/check-word">
-        <input name="word" type="text" method="POST" />
+    <section id="guess" class="guess-box">
+      <form methods="POST" id="submit-word" class="submit-word">
+        <input name="word" type="text" id="word" />
       </form>
+    </section>
+    <section class="feedback-box" id="feedback">
+      <p id="msgs-box" class="msgs"></p>
+      <p id="score-box" class="score">Score: <span id="score"></span></p>
+      <ul id="submitted-words" class="words"></ul>
     </section>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/jquery"></script>

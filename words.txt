@@ -68864,6 +68864,7 @@ feelingness
 feer
 feere
 feering
+feet
 feetage
 feetless
 feeze
@@ -82636,6 +82637,7 @@ harvesttime
 Harvey
 Harveyize
 harzburgite
+has
 hasan
 hasenpfeffer
 hash

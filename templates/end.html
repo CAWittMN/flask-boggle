@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Game Over!</h1>
+<h2>Your score: {{ score }}</h2>
+<h3>Words you found:</h3>
+<ul>
+  {% for word in words %}
+  <li>{{ word }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

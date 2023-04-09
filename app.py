@@ -5,18 +5,30 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "boopydoop"
 
-debug = DebugToolbarExtension(app)
+#debug = DebugToolbarExtension(app)
 
 boggle_game = Boggle()
 
 @app.route('/')
-def home_board():
+def home_page():
+    return render_template('/base.html')
 
+@app.route('/game')
+def home_board():
+    score = session["score"]
+    words = session["used-words"]
+    board = session['board']
+    if board == None:
+        return redirect('/')
+    return render_template('/game.html', board=board, score=score, words=words)
+
+@app.route('/initialize-game', methods=["POST"])
+def initialize_game():
     board = boggle_game.make_board()
     session['board'] = board
     session['used-words'] = []
-
-    return render_template('/index.html', board=board)
+    session['score'] = 0
+    return redirect('/game')
 
 @app.route('/check-word')
 def check_word():
@@ -37,3 +49,25 @@ def get_words():
     words = session['used-words']
     return jsonify(words)
 
+@app.route('/get-score')
+def get_score():
+    score = session["score"]
+    return jsonify(score)
+
+@app.route('/post-score', methods=["POST"])
+def post_score():
+
+    score = request.json["score"]
+    session['score'] = score
+
+    return jsonify(score)
+
+
+@app.route('/end-game')
+def end_game():
+    endGame = request.args['endgame']
+    if endGame == 'endgame':
+        score = session['score']
+        words = session["used-words"]
+        return render_template('/end.html', score=score, words=words)
+    return redirect('/')

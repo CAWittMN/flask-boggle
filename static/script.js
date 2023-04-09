@@ -8,15 +8,16 @@ class Game {
       "You found a word!",
       "Perfect!",
     ];
-    this.$game = $("#game");
+
     this.$timer = $("#timer");
-    this.$board = $("#board");
     this.$wordSubmit = $("#submit-word");
     this.$inputWord = $("#word");
     this.$msgs = $("#msgs-box");
     this.$scoreBoard = $("#score");
     this.$words = $("#submitted-words");
+
     this.timer = setInterval(this.handleTimer.bind(this), 1000);
+
     this.$wordSubmit.on("submit", this.handleSubmit.bind(this));
   }
 
@@ -32,14 +33,17 @@ class Game {
 
   async handleSubmit(evt) {
     evt.preventDefault();
+
     const word = this.$inputWord.val();
     const response = await axios.get("/check-word", {
       params: { word: word },
     });
     const result = response.data;
+
     this.handleResult(result.result, word);
     this.$inputWord.val("");
   }
+
   handleResult(result, word) {
     if (result === "not-word") {
       this.showMsg("Sorry! That's not a word!");

@@ -30,11 +30,36 @@
 }
 
 .game-box {
+  border: 2px solid cyan;
   margin: auto;
 }
 
 .guess-box {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#boggle-container {
+  border: 2px solid orange;
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+}
+
+#feedback {
+  text-align: center;
+  border: 2px solid yellow;
+  width: 33%;
+}
+
+.timer-box {
+  text-align: center;
+  width: 33%;
+  border: 2px solid blue;
+}
+body {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }

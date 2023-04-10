@@ -19,9 +19,9 @@ def home_page():
 def show_game():
     """Show game board and info"""
 
-    score = session["score"]
-    words = session["used-words"]
-    board = session['board']
+    score = session.get("score")
+    words = session.get("used-words")
+    board = session.get('board')
 
     if board == None:
         return redirect('/')
@@ -44,9 +44,9 @@ def initialize_game():
 def check_word():
     """Check submitted word and update used words"""
 
-    board = session['board']
-    word = request.args['word']
-    used_words = session['used-words']
+    board = session.get('board')
+    word = request.args.get('word')
+    used_words = session.get('used-words')
 
     result = boggle_game.check_valid_word(board, word)
 

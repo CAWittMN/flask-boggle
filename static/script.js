@@ -101,4 +101,4 @@ class Game {
   }
 }
 
-const game = new Game();
+const game = $("#boggle-container").length != 0 ? new Game() : null;

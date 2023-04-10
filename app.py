@@ -16,7 +16,7 @@ def home_page():
     return render_template('/base.html')
 
 @app.route('/game')
-def home_board():
+def show_game():
     """Show game board and info"""
 
     score = session["score"]

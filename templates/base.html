@@ -6,11 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flask Boggle</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Boggle!</h1>
+    <h1 class="title">Boggle!</h1>
     <form action="/initialize-game" method="post">
-      <button>Start New Game</button>
+      <button class="start-game">Start New Game</button>
     </form>
     {% block content %} {% endblock %}
     <script

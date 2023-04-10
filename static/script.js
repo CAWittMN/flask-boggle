@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.timeLimit = 60;
+    this.timeLimit = 120;
     this.compliments = [
       "Nice!",
       "Great job!",
@@ -52,7 +52,10 @@ class Game {
     } else if (result === "already-used") {
       this.showMsg("Sorry! You've already used that word!");
     } else {
-      const compliment = this.getCompliment();
+      let compliment = this.getCompliment();
+      if (word.length >= 6) {
+        compliment = "That's a big word!";
+      }
       this.showMsg(compliment);
       this.updateWords();
       this.updateScore(word.length);
@@ -80,6 +83,15 @@ class Game {
   }
   async updateScore(wordScore) {
     const getScore = await axios.get("/get-score");
+    if (wordScore === 4) {
+      wordScore += 2;
+    } else if (wordScore === 5) {
+      wordScore += 4;
+    } else if (wordScore === 6) {
+      wordScore += 6;
+    } else if (wordScore >= 7) {
+      wordScore += 15;
+    }
     const score = getScore.data + wordScore;
     const postScore = await axios.post("/post-score", { score: score });
     this.$scoreBoard.text(score);

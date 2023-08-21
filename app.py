@@ -1,9 +1,9 @@
 from boggle import Boggle
+import os
 from flask import Flask, redirect, render_template, session, request, make_response, jsonify
-from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "boopydoop"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "boopydoop")
 
 #debug = DebugToolbarExtension(app)
 
